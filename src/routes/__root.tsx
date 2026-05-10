@@ -79,10 +79,17 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Nextgen Solutions & Contracting — Construction, Fit-Out & MEP" },
-      { name: "description", content: "Saudi-based integrated construction, interior fit-out, MEP and smart systems contractor delivering premium projects in Al Jubail and across KSA." },
+      {
+        name: "description",
+        content:
+          "Saudi-based integrated construction, interior fit-out, MEP and smart systems contractor delivering premium projects in Al Jubail and across KSA.",
+      },
       { name: "author", content: "Nextgen Solutions & Contracting" },
       { property: "og:title", content: "Nextgen Solutions & Contracting" },
-      { property: "og:description", content: "Framing dreams. Building reality. Premium contracting across Saudi Arabia." },
+      {
+        property: "og:description",
+        content: "Framing dreams. Building reality. Premium contracting across Saudi Arabia.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@NextgenContracting" },
@@ -130,9 +137,9 @@ function RootComponent() {
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -8 }}
-                transition={{ 
-                  duration: 0.35, 
-                  ease: [0.22, 1, 0.36, 1] 
+                transition={{
+                  duration: 0.35,
+                  ease: [0.22, 1, 0.36, 1],
                 }}
               >
                 <Outlet />

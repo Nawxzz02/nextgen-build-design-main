@@ -16,9 +16,16 @@ export const Route = createFileRoute("/portfolio")({
   head: () => ({
     meta: [
       { title: "Portfolio — Nextgen Solutions & Contracting" },
-      { name: "description", content: "Selected interior, exterior and construction projects delivered by Nextgen across Saudi Arabia." },
+      {
+        name: "description",
+        content:
+          "Selected interior, exterior and construction projects delivered by Nextgen across Saudi Arabia.",
+      },
       { property: "og:title", content: "Portfolio — Nextgen" },
-      { property: "og:description", content: "Hospitality, retail, healthcare, residential and commercial works." },
+      {
+        property: "og:description",
+        content: "Hospitality, retail, healthcare, residential and commercial works.",
+      },
     ],
   }),
   component: Portfolio,
@@ -39,24 +46,42 @@ const items: { src: string; cat: Exclude<Cat, "All">; title: string }[] = [
 
 function Portfolio() {
   const [filter, setFilter] = useState<Cat>("All");
-  const list = filter === "All" ? items : items.filter(i => i.cat === filter);
+  const list = filter === "All" ? items : items.filter((i) => i.cat === filter);
   return (
     <>
       <section className="border-b border-border" style={{ background: "var(--gradient-hero)" }}>
         <div className="container-page py-24 md:py-32 text-primary-foreground">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}>
-            <span className="text-xs uppercase tracking-[0.3em] text-accent font-semibold">Portfolio</span>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <span className="text-xs uppercase tracking-[0.3em] text-accent font-semibold">
+              Portfolio
+            </span>
             <h1 className="mt-4 text-4xl md:text-6xl font-bold">Selected work.</h1>
-            <p className="mt-5 text-lg text-primary-foreground/80 max-w-2xl">A snapshot of recent projects across hospitality, residential, corporate, healthcare and industrial sectors.</p>
+            <p className="mt-5 text-lg text-primary-foreground/80 max-w-2xl">
+              A snapshot of recent projects across hospitality, residential, corporate, healthcare
+              and industrial sectors.
+            </p>
           </motion.div>
         </div>
       </section>
-      <section className="container-page py-12">
-        <div className="flex flex-wrap gap-2">
-          {(["All", "Interior", "Exterior", "Construction"] as Cat[]).map(c => (
-            <motion.button key={c} onClick={() => setFilter(c)} whileTap={{ scale: 0.95 }} className={`relative px-5 py-2 rounded-full text-sm font-semibold border transition ${filter === c ? "text-background border-foreground" : "border-border hover:border-foreground"}`}>
+      <section className="container-page pt-20 pb-10 md:pb-20">
+        <div className="flex flex-wrap items-center justify-center gap-2">
+          {(["All", "Interior", "Exterior", "Construction"] as Cat[]).map((c) => (
+            <motion.button
+              key={c}
+              onClick={() => setFilter(c)}
+              whileTap={{ scale: 0.95 }}
+              className={`relative px-5 py-2 rounded-full text-sm font-semibold border transition ${filter === c ? "text-background border-foreground" : "border-border hover:border-foreground"}`}
+            >
               {filter === c && (
-                <motion.span layoutId="filter-pill" className="absolute inset-0 rounded-full bg-foreground -z-10" transition={{ type: "spring", duration: 0.5 }} />
+                <motion.span
+                  layoutId="filter-pill"
+                  className="absolute inset-0 rounded-full bg-foreground -z-10"
+                  transition={{ type: "spring", duration: 0.5 }}
+                />
               )}
               <span className="relative">{c}</span>
             </motion.button>
@@ -76,7 +101,14 @@ function Portfolio() {
                 whileHover={{ y: -6 }}
                 className="group relative aspect-[4/5] overflow-hidden rounded-xl"
               >
-                <motion.img src={it.src} alt={it.title} loading="lazy" className="size-full object-cover" whileHover={{ scale: 1.08 }} transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }} />
+                <motion.img
+                  src={it.src}
+                  alt={it.title}
+                  loading="lazy"
+                  className="size-full object-cover"
+                  whileHover={{ scale: 1.08 }}
+                  transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
                 <div className="absolute bottom-0 inset-x-0 p-5 text-white">
                   <span className="text-xs uppercase tracking-[0.2em] text-accent">{it.cat}</span>

@@ -12,7 +12,12 @@ export const stagger: Variants = {
   show: { transition: { staggerChildren: 0.08, delayChildren: 0.05 } },
 };
 
-export function Reveal({ children, className, delay = 0, ...rest }: { children: ReactNode; className?: string; delay?: number } & HTMLMotionProps<"div">) {
+export function Reveal({
+  children,
+  className,
+  delay = 0,
+  ...rest
+}: { children: ReactNode; className?: string; delay?: number } & HTMLMotionProps<"div">) {
   return (
     <motion.div
       initial="hidden"
@@ -30,14 +35,24 @@ export function Reveal({ children, className, delay = 0, ...rest }: { children: 
 
 export function StaggerGroup({ children, className }: { children: ReactNode; className?: string }) {
   return (
-    <motion.div initial="hidden" whileInView="show" viewport={{ once: true, margin: "-60px" }} variants={stagger} className={className}>
+    <motion.div
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, margin: "-60px" }}
+      variants={stagger}
+      className={className}
+    >
       {children}
     </motion.div>
   );
 }
 
 export function StaggerItem({ children, className }: { children: ReactNode; className?: string }) {
-  return <motion.div variants={fadeUp} className={className}>{children}</motion.div>;
+  return (
+    <motion.div variants={fadeUp} className={className}>
+      {children}
+    </motion.div>
+  );
 }
 
 export { motion };

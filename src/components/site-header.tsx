@@ -48,8 +48,12 @@ export function SiteHeader() {
             />
           </div>
           <div className="hidden sm:flex flex-col">
-            <span className="text-sm font-bold tracking-tight leading-none text-foreground">NEXTGEN</span>
-            <span className="text-[10px] uppercase tracking-[0.2em] font-medium text-muted-foreground mt-0.5">Solutions</span>
+            <span className="text-sm font-bold tracking-tight leading-none text-foreground">
+              NEXTGEN
+            </span>
+            <span className="text-[10px] uppercase tracking-[0.2em] font-medium text-muted-foreground mt-0.5">
+              Solutions
+            </span>
           </div>
         </Link>
 
@@ -68,22 +72,15 @@ export function SiteHeader() {
         </nav>
 
         <div className="flex items-center gap-3">
-          <button 
-            onClick={toggle} 
-            className="theme-toggle"
-            aria-label="Toggle theme"
-          >
+          <button onClick={toggle} className="theme-toggle" aria-label="Toggle theme">
             {theme === "dark" ? <Sun className="size-4" /> : <Moon className="size-4" />}
           </button>
-          
-          <Link
-            to="/contact"
-            className="hidden sm:flex cta-button"
-          >
+
+          <Link to="/contact" className="hidden sm:flex cta-button">
             Get a Quote
           </Link>
 
-          <button 
+          <button
             className="lg:hidden p-2 rounded-full hover:bg-muted transition-colors text-foreground relative z-70"
             onClick={() => setOpen(!open)}
             aria-label="Menu"
@@ -121,7 +118,7 @@ export function SiteHeader() {
                     </Link>
                   </motion.div>
                 ))}
-                
+
                 <div className="mt-1 pt-1.5 border-t border-border/40">
                   <Link
                     to="/contact"
@@ -140,4 +137,3 @@ export function SiteHeader() {
     </header>
   );
 }
-
