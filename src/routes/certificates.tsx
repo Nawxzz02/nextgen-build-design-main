@@ -63,7 +63,7 @@ function Certificates() {
             </div>
             <h3 className="mt-5 text-xl font-bold">{d.title}</h3>
             <p className="mt-2 text-sm text-muted-foreground">{d.desc}</p>
-            <div className="mt-6 aspect-[3/4] rounded-lg border-2 border-dashed border-border flex items-center justify-center text-xs text-muted-foreground">
+            <div className="mt-6 aspect-3/4 rounded-lg border-2 border-dashed border-border flex items-center justify-center text-xs text-muted-foreground">
               Certificate scan
             </div>
           </div>

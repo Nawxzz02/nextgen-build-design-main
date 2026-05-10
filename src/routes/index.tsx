@@ -614,7 +614,7 @@ function HomePage() {
           <div className="mt-10 lg:col-span-6 lg:col-end-13 lg:mt-0">
             <Reveal delay={0.2}>
               <div className="space-y-3 sm:space-y-3">
-                <ul className="grid grid-cols-2 divide-x-1 divide-y-1 divide-neutral-300 dark:divide-neutral-300 overflow-hidden border-1 border-neutral-300 dark:border-neutral-700 rounded-xl">
+                <ul className="grid grid-cols-2 divide-x divide-y-1 divide-neutral-300 dark:divide-neutral-300 overflow-hidden border-1 border-neutral-300 dark:border-neutral-700 rounded-xl">
                   {[
                     {
                       count: "250+",
