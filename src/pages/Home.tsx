@@ -379,6 +379,41 @@ export default function Home() {
           </div>
         </div>
       </section>
+            {/* CLIENTS */}
+      <section className="pt-12 md:pt-20 pb-4 md:pb-6 overflow-hidden">
+        <div className="container-page">
+          <Reveal>
+            <div className="flex flex-col items-center">
+              <span className="inline-flex items-center px-3 py-1 rounded-full bg-brand-blue/10 text-[10px] uppercase tracking-[0.2em] text-brand-blue font-bold mb-6">
+                Trusted by leading organizations
+              </span>
+              <h2 className="text-3xl md:text-5xl font-bold text-foreground text-center">
+                Global Partners.
+              </h2>
+            </div>
+          </Reveal>
+          <div
+            className="relative mt-10 overflow-hidden"
+            style={{
+              maskImage: "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
+              WebkitMaskImage:
+                "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
+            }}
+          >
+            <div className="flex gap-4 w-max animate-scroll-marquee">
+              {[...clients, ...clients].map((c, i) => (
+                <div
+                  key={`${c}-${i}`}
+                  className="h-20 w-48 shrink-0 rounded-lg border border-border bg-card flex items-center justify-center text-sm font-bold tracking-wider text-muted-foreground hover:text-foreground hover:border-accent transition-colors"
+                >
+                  {c}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
 
       {/* PORTFOLIO */}
       <section className="pt-12 md:pt-20 pb-4 md:pb-5">
@@ -423,40 +458,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CLIENTS */}
-      <section className="pt-12 md:pt-20 pb-4 md:pb-6 overflow-hidden">
-        <div className="container-page">
-          <Reveal>
-            <div className="flex flex-col items-center">
-              <span className="inline-flex items-center px-3 py-1 rounded-full bg-brand-blue/10 text-[10px] uppercase tracking-[0.2em] text-brand-blue font-bold mb-6">
-                Trusted by leading organizations
-              </span>
-              <h2 className="text-3xl md:text-5xl font-bold text-foreground text-center">
-                Global Partners.
-              </h2>
-            </div>
-          </Reveal>
-          <div
-            className="relative mt-10 overflow-hidden"
-            style={{
-              maskImage: "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
-              WebkitMaskImage:
-                "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
-            }}
-          >
-            <div className="flex gap-4 w-max animate-scroll-marquee">
-              {[...clients, ...clients].map((c, i) => (
-                <div
-                  key={`${c}-${i}`}
-                  className="h-20 w-48 shrink-0 rounded-lg border border-border bg-card flex items-center justify-center text-sm font-bold tracking-wider text-muted-foreground hover:text-foreground hover:border-accent transition-colors"
-                >
-                  {c}
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* TESTIMONIALS & STATS */}
       <section className="container-page py-10 lg:py-14">
