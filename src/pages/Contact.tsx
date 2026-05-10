@@ -1,9 +1,7 @@
-import { createFileRoute } from "@tanstack/react-router";
 import {
   Mail,
   Phone,
   MapPin,
-  User,
   Loader2,
   CheckCircle2,
   Facebook,
@@ -15,21 +13,6 @@ import { useState } from "react";
 import { z } from "zod";
 import { motion } from "@/components/motion";
 
-export const Route = createFileRoute("/contact")({
-  head: () => ({
-    meta: [
-      { title: "Contact — Nextgen Solutions & Contracting" },
-      {
-        name: "description",
-        content: "Get in touch with Nextgen Solutions & Contracting in Al Jubail, Saudi Arabia.",
-      },
-      { property: "og:title", content: "Contact Nextgen" },
-      { property: "og:description", content: "Phone, email and address for project inquiries." },
-    ],
-  }),
-  component: Contact,
-});
-
 const schema = z.object({
   name: z.string().trim().min(2, "Please enter your name").max(100),
   email: z.string().trim().email("Invalid email").max(255),
@@ -39,7 +22,7 @@ const schema = z.object({
 });
 type FormState = z.infer<typeof schema>;
 
-function Contact() {
+export default function Contact() {
   const [data, setData] = useState<FormState>({
     name: "",
     email: "",

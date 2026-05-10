@@ -1,4 +1,3 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import { motion } from "@/components/motion";
@@ -11,25 +10,6 @@ import p6 from "@/assets/portfolio-6.jpg";
 import si from "@/assets/svc-interior.jpg";
 import sx from "@/assets/svc-exterior.jpg";
 import ss from "@/assets/svc-structural.jpg";
-
-export const Route = createFileRoute("/portfolio")({
-  head: () => ({
-    meta: [
-      { title: "Portfolio — Nextgen Solutions & Contracting" },
-      {
-        name: "description",
-        content:
-          "Selected interior, exterior and construction projects delivered by Nextgen across Saudi Arabia.",
-      },
-      { property: "og:title", content: "Portfolio — Nextgen" },
-      {
-        property: "og:description",
-        content: "Hospitality, retail, healthcare, residential and commercial works.",
-      },
-    ],
-  }),
-  component: Portfolio,
-});
 
 type Cat = "All" | "Interior" | "Exterior" | "Construction";
 const items: { src: string; cat: Exclude<Cat, "All">; title: string }[] = [
@@ -44,7 +24,7 @@ const items: { src: string; cat: Exclude<Cat, "All">; title: string }[] = [
   { src: ss, cat: "Construction", title: "Frame Erection" },
 ];
 
-function Portfolio() {
+export default function Portfolio() {
   const [filter, setFilter] = useState<Cat>("All");
   const list = filter === "All" ? items : items.filter((i) => i.cat === filter);
   return (

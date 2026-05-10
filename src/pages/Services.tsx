@@ -1,30 +1,8 @@
-import { createFileRoute, Link, Outlet, useMatches } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { services } from "@/lib/services-data";
 
-export const Route = createFileRoute("/services")({
-  head: () => ({
-    meta: [
-      { title: "Services — Nextgen Solutions & Contracting" },
-      {
-        name: "description",
-        content:
-          "Construction, structural works, enclosure, exterior finishes, MEP systems, interior finishes and specialized smart-systems works.",
-      },
-      { property: "og:title", content: "Our Services — Nextgen" },
-      {
-        property: "og:description",
-        content: "Six integrated service categories under one accountable contract.",
-      },
-    ],
-  }),
-  component: ServicesShell,
-});
-
-function ServicesShell() {
-  const matches = useMatches();
-  const isChild = matches.some((m) => m.routeId.startsWith("/services/"));
-  if (isChild) return <Outlet />;
+export default function Services() {
   return (
     <>
       <section className="border-b border-border" style={{ background: "var(--gradient-hero)" }}>
@@ -45,8 +23,7 @@ function ServicesShell() {
           {services.map((s) => (
             <Link
               key={s.slug}
-              to="/services/$slug"
-              params={{ slug: s.slug }}
+              to={`/services/${s.slug}`}
               className="group rounded-2xl overflow-hidden border border-border bg-card hover:border-accent transition-all"
               style={{ boxShadow: "var(--shadow-card)" }}
             >

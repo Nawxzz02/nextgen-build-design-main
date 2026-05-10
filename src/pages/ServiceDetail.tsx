@@ -1,56 +1,25 @@
-import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { Link, useParams } from "react-router-dom";
 import { ArrowLeft, ArrowRight, CheckCircle2, Plus } from "lucide-react";
 import { useState } from "react";
 import { AnimatePresence } from "framer-motion";
-import { z } from "zod";
-import { getService, services, type Service, type SubService } from "@/lib/services-data";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogDescription,
-} from "@/components/ui/dialog";
+import { getService, services, type SubService } from "@/lib/services-data";
 import { motion } from "@/components/motion";
 
-export const Route = createFileRoute("/services/$slug")({
-  loader: ({ params }): Service => {
-    const svc = getService(params.slug);
-    if (!svc) throw notFound();
-    return svc;
-  },
-  head: ({ loaderData }) => ({
-    meta: loaderData
-      ? [
-          { title: `${loaderData.title} — Nextgen Solutions & Contracting` },
-          { name: "description", content: loaderData.short },
-          { property: "og:title", content: loaderData.title },
-          { property: "og:description", content: loaderData.short },
-          { property: "og:image", content: loaderData.image },
-        ]
-      : [],
-  }),
-  errorComponent: ({ error, reset }) => (
-    <div className="container-page py-32 text-center">
-      <p className="text-destructive">{error.message}</p>
-      <button onClick={reset} className="mt-4 underline">
-        Retry
-      </button>
-    </div>
-  ),
-  notFoundComponent: () => (
-    <div className="container-page py-32 text-center">
-      <h1 className="text-4xl font-bold">Service not found</h1>
-      <Link to="/services" className="mt-6 inline-flex underline">
-        Back to services
-      </Link>
-    </div>
-  ),
-  component: ServiceDetail,
-});
+export default function ServiceDetail() {
+  const { slug } = useParams<{ slug: string }>();
+  const svc = slug ? getService(slug) : null;
+  
+  if (!svc) {
+    return (
+      <div className="container-page py-32 text-center">
+        <h1 className="text-4xl font-bold">Service not found</h1>
+        <Link to="/services" className="mt-6 inline-flex underline">
+          Back to services
+        </Link>
+      </div>
+    );
+  }
 
-function ServiceDetail() {
-  const svc: Service = Route.useLoaderData();
   const idx = services.findIndex((s) => s.slug === svc.slug);
   const next = services[(idx + 1) % services.length];
   const [active, setActive] = useState<SubService | null>(null);
@@ -179,8 +148,7 @@ function ServiceDetail() {
               </Link>
             </div>
             <Link
-              to="/services/$slug"
-              params={{ slug: next.slug }}
+              to={`/services/${next.slug}`}
               className="block p-6 rounded-2xl border border-border hover:border-accent transition group"
             >
               <span className="text-xs uppercase tracking-[0.2em] text-muted-foreground">

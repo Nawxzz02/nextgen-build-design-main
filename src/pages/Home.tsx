@@ -1,5 +1,5 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
 import * as React from "react";
+import { Link } from "react-router-dom";
 import {
   ArrowRight,
   CheckCircle2,
@@ -28,25 +28,6 @@ import {
   CarouselItem,
   type CarouselApi,
 } from "@/components/ui/carousel";
-
-export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "Nextgen Solutions & Contracting — Framing Dreams, Building Reality" },
-      {
-        name: "description",
-        content:
-          "Premium construction, interior fit-out, MEP and smart systems contractor in Al Jubail, Saudi Arabia.",
-      },
-      { property: "og:title", content: "Nextgen Solutions & Contracting" },
-      {
-        property: "og:description",
-        content: "Framing dreams. Building reality. Integrated contracting across KSA.",
-      },
-    ],
-  }),
-  component: HomePage,
-});
 
 const services = [
   {
@@ -130,50 +111,6 @@ const clients = [
   "Bahri",
 ];
 
-const testimonials = [
-  {
-    quote:
-      "Nextgen's integrated model — handling civil, interior, and MEP under one roof — drastically reduced our coordination overhead and saved us weeks on the schedule.",
-    author: "Project Director",
-    company: "Industrial Sector",
-    size: "large",
-  },
-  {
-    quote: "The quality of their bespoke joinery and interior finishes is unmatched in Al Jubail.",
-    author: "Operations Manager",
-    company: "Commercial Office",
-    size: "small",
-  },
-  {
-    quote:
-      "Reliable, transparent, and strictly on-time. A rare partner in the construction industry.",
-    author: "General Manager",
-    company: "Retail Group",
-    size: "small",
-  },
-  {
-    quote:
-      "From foundation to smart system integration, their technical expertise ensured a flawless handover for our new headquarters.",
-    author: "Lead Architect",
-    company: "Real Estate Dev",
-    size: "medium",
-  },
-  {
-    quote:
-      "The project was delivered beyond our expectations. Their attention to detail in the MEP works is commendable.",
-    author: "Sultan Al-Otaibi",
-    company: "Public Works",
-    size: "medium",
-  },
-  {
-    quote:
-      "Exceptional professionalism and adherence to safety standards. They are our preferred partner for industrial civil works.",
-    author: "Safety Officer",
-    company: "Petrochem Corp",
-    size: "small",
-  },
-];
-
 function Counter({ value, duration = 2 }: { value: string; duration?: number }) {
   const [displayValue, setDisplayValue] = React.useState(0);
   const target = parseInt(value.replace(/[^0-9.]/g, ""));
@@ -203,7 +140,7 @@ function Counter({ value, duration = 2 }: { value: string; duration?: number }) 
   );
 }
 
-function HomePage() {
+export default function Home() {
   const [api, setApi] = React.useState<CarouselApi>();
   const [selectedIndex, setSelectedIndex] = React.useState(0);
   const [scrollSnaps, setScrollSnaps] = React.useState<number[]>([]);
@@ -331,8 +268,6 @@ function HomePage() {
         </div>
       </section>
 
-
-
       {/* SERVICES with images */}
       <section className="pt-12 md:pt-20 pb-12 md:pb-20">
         <div className="container-page">
@@ -360,8 +295,7 @@ function HomePage() {
                   transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
                 >
                   <Link
-                    to="/services/$slug"
-                    params={{ slug: s.slug }}
+                    to={`/services/${s.slug}`}
                     className="group block rounded-2xl overflow-hidden bg-card border border-border hover:border-accent transition-colors"
                     style={{ boxShadow: "var(--shadow-card)" }}
                   >
@@ -524,7 +458,7 @@ function HomePage() {
         </div>
       </section>
 
-      {/* TESTIMONIALS & STATS (ASTRO STYLE REPLICA) */}
+      {/* TESTIMONIALS & STATS */}
       <section className="container-page py-10 lg:py-14">
         <div className="lg:grid lg:grid-cols-12 lg:items-center lg:justify-between lg:gap-16">
           {/* TESTIMONIALS */}

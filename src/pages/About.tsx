@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import {
   Target,
   Eye,
@@ -17,26 +17,7 @@ import {
 } from "lucide-react";
 import p2 from "@/assets/portfolio-2.jpg";
 import vision2030 from "@/assets/vision-2030.png";
-import { Reveal, StaggerGroup, StaggerItem, motion } from "@/components/motion";
-
-export const Route = createFileRoute("/about")({
-  head: () => ({
-    meta: [
-      { title: "About — Nextgen Solutions & Contracting" },
-      {
-        name: "description",
-        content:
-          "Saudi-registered contractor delivering interior fit-out, MEP and construction across commercial, hospitality, healthcare, retail, industrial and residential sectors.",
-      },
-      { property: "og:title", content: "About Nextgen Solutions & Contracting" },
-      {
-        property: "og:description",
-        content: "Vision 2030–aligned construction and smart systems delivery.",
-      },
-    ],
-  }),
-  component: AboutPage,
-});
+import { Reveal, motion } from "@/components/motion";
 
 const values = [
   "Innovation",
@@ -85,7 +66,7 @@ const methodology = [
   },
 ];
 
-function AboutPage() {
+export default function About() {
   return (
     <>
       <section

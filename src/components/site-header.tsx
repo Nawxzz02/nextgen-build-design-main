@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { Link, NavLink } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Menu, X, Moon, Sun, ChevronRight } from "lucide-react";
 import { useTheme } from "./theme-provider";
@@ -59,15 +59,16 @@ export function SiteHeader() {
 
         <nav className="hidden lg:flex items-center gap-2">
           {nav.map((n) => (
-            <Link
+            <NavLink
               key={n.to}
               to={n.to}
-              className="nav-link"
-              activeProps={{ className: "nav-link active" }}
-              activeOptions={{ exact: n.to === "/" }}
+              end={n.to === "/"}
+              className={({ isActive }) => 
+                `nav-link ${isActive ? "active" : ""}`
+              }
             >
               {n.label}
-            </Link>
+            </NavLink>
           ))}
         </nav>
 

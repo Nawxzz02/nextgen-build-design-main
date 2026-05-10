@@ -1,21 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { FileCheck, Award, ShieldCheck } from "lucide-react";
-
-export const Route = createFileRoute("/certificates")({
-  head: () => ({
-    meta: [
-      { title: "Certificates — Nextgen Solutions & Contracting" },
-      {
-        name: "description",
-        content:
-          "Commercial registration and corporate documentation for Nextgen Solutions & Contracting Est.",
-      },
-      { property: "og:title", content: "Certificates — Nextgen" },
-      { property: "og:description", content: "Officially registered Saudi contractor." },
-    ],
-  }),
-  component: Certificates,
-});
 
 const docs = [
   {
@@ -35,7 +18,7 @@ const docs = [
   },
 ];
 
-function Certificates() {
+export default function Certificates() {
   return (
     <>
       <section className="border-b border-border" style={{ background: "var(--gradient-hero)" }}>
