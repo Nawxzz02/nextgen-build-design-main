@@ -50,7 +50,7 @@ function ServicesShell() {
               className="group rounded-2xl overflow-hidden border border-border bg-card hover:border-accent transition-all"
               style={{ boxShadow: "var(--shadow-card)" }}
             >
-              <div className="aspect-[4/3] overflow-hidden">
+              <div className="aspect-4/3 overflow-hidden">
                 <img
                   src={s.image}
                   alt={s.title}

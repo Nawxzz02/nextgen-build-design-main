@@ -99,7 +99,7 @@ function Portfolio() {
                 exit={{ opacity: 0, scale: 0.92 }}
                 transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
                 whileHover={{ y: -6 }}
-                className="group relative aspect-[4/5] overflow-hidden rounded-xl"
+                className="group relative aspect-4/5 overflow-hidden rounded-xl"
               >
                 <motion.img
                   src={it.src}
@@ -109,7 +109,7 @@ function Portfolio() {
                   whileHover={{ scale: 1.08 }}
                   transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+                <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/10 to-transparent" />
                 <div className="absolute bottom-0 inset-x-0 p-5 text-white">
                   <span className="text-xs uppercase tracking-[0.2em] text-accent">{it.cat}</span>
                   <h3 className="mt-1 text-lg font-bold">{it.title}</h3>
