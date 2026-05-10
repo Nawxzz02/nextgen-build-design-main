@@ -19,6 +19,7 @@ const nav = [
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const { theme, toggle } = useTheme();
 
   useEffect(() => {
@@ -28,43 +29,58 @@ export function SiteHeader() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Auto-close drawer and track mobile state on resize
   useEffect(() => {
-    if (open) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
-  }, [open]);
+    const checkMobile = () => {
+      const mobile = window.innerWidth < 1024;
+      setIsMobile(mobile);
+      if (!mobile) setOpen(false);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = open && isMobile ? "hidden" : "unset";
+    return () => { document.body.style.overflow = "unset"; };
+  }, [open, isMobile]);
 
   return (
-    <header className={`sticky top-0 z-50 premium-header ${scrolled ? "scrolled" : ""}`}>
-      <div className="container-page flex items-center justify-between gap-8">
-        <Link to="/" className="premium-logo">
+    <header className={`pill-header-wrapper ${scrolled ? "scrolled" : ""}`}>
+      {/* Floating Pill Navbar */}
+      <div className="pill-navbar">
+        {/* Logo */}
+        <Link to="/" className="premium-logo pill-logo">
           <div className="logo-container">
             <img
               src={theme === "dark" ? footerLogo : logo}
               alt="Nextgen Solutions & Contracting"
-              className="h-14 md:h-16 w-auto object-contain"
+              className="h-9 w-auto object-contain"
             />
           </div>
           <div className="hidden sm:flex flex-col">
-            <span className="text-sm font-bold tracking-tight leading-none text-foreground">
+            <span className="text-xs font-bold tracking-tight leading-none text-foreground">
               NEXTGEN
             </span>
-            <span className="text-[10px] uppercase tracking-[0.2em] font-medium text-muted-foreground mt-0.5">
+            <span className="text-[9px] uppercase tracking-[0.2em] font-medium text-muted-foreground mt-0.5">
               Solutions
             </span>
           </div>
         </Link>
 
-        <nav className="hidden lg:flex items-center gap-2">
+        {/* Divider */}
+        <div className="pill-divider hidden lg:block" />
+
+        {/* Nav Links — flex-1 to fill full width */}
+        <nav className="hidden lg:flex items-center justify-center gap-1 flex-1">
           {nav.map((n) => (
             <NavLink
               key={n.to}
               to={n.to}
               end={n.to === "/"}
-              className={({ isActive }) => 
-                `nav-link ${isActive ? "active" : ""}`
+              className={({ isActive }) =>
+                `pill-nav-link ${isActive ? "active" : ""}`
               }
             >
               {n.label}
@@ -72,47 +88,54 @@ export function SiteHeader() {
           ))}
         </nav>
 
-        <div className="flex items-center gap-3">
-          <button onClick={toggle} className="theme-toggle" aria-label="Toggle theme">
+        {/* Divider */}
+        <div className="pill-divider hidden lg:block" />
+
+        {/* Actions */}
+        <div className="flex items-center gap-2">
+          <button onClick={toggle} className="pill-icon-btn" aria-label="Toggle theme">
             {theme === "dark" ? <Sun className="size-4" /> : <Moon className="size-4" />}
           </button>
 
-          <Link to="/contact" className="hidden sm:flex cta-button">
+          <Link to="/contact" className="hidden sm:flex pill-cta">
             Get a Quote
           </Link>
 
-          <button
-            className="lg:hidden p-2 rounded-full hover:bg-muted transition-colors text-foreground relative z-70"
-            onClick={() => setOpen(!open)}
-            aria-label="Menu"
-          >
-            {open ? <X className="size-6" /> : <Menu className="size-6" />}
-          </button>
+          <div className="lg:hidden flex items-center">
+            <button
+              className="pill-icon-btn"
+              onClick={() => setOpen(!open)}
+              aria-label="Menu"
+            >
+              {open ? <X className="size-5" /> : <Menu className="size-5" />}
+            </button>
+          </div>
         </div>
       </div>
 
       <AnimatePresence>
-        {open && (
+        {open && isMobile && (
           <motion.div
-            initial={{ opacity: 0, scale: 0.98, y: -5 }}
+            initial={{ opacity: 0, scale: 0.96, y: -8 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.98, y: -5 }}
+            exit={{ opacity: 0, scale: 0.96, y: -8 }}
             transition={{ type: "spring", stiffness: 400, damping: 30 }}
-            className="fixed top-(--header-height) right-4 left-4 z-60 lg:hidden"
+            className="fixed top-20 right-4 left-4 z-40 lg:hidden"
+            style={{ pointerEvents: "all" }}
           >
-            <div className="bg-background/90 backdrop-blur-2xl border border-border/40 shadow-2xl rounded-2xl overflow-hidden mt-1">
+            <div className="bg-background/90 backdrop-blur-2xl border border-border/40 shadow-2xl rounded-2xl overflow-hidden">
               <div className="flex flex-col p-1.5 gap-0.5">
                 {nav.map((n, i) => (
                   <motion.div
                     key={n.to}
-                    initial={{ opacity: 0, y: -5 }}
+                    initial={{ opacity: 0, y: -4 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: i * 0.03 }}
+                    transition={{ delay: i * 0.04 }}
                   >
                     <Link
                       to={n.to}
                       onClick={() => setOpen(false)}
-                      className="group flex items-center justify-between px-3 py-2 text-sm font-medium text-foreground/80 hover:text-foreground hover:bg-muted/60 rounded-lg transition-all"
+                      className="group flex items-center justify-between px-4 py-2.5 text-sm font-medium text-foreground/80 hover:text-foreground hover:bg-muted/60 rounded-xl transition-all"
                     >
                       <span>{n.label}</span>
                       <ChevronRight className="size-3.5 opacity-0 group-hover:opacity-100 -translate-x-1 group-hover:translate-x-0 transition-all" />
@@ -120,11 +143,11 @@ export function SiteHeader() {
                   </motion.div>
                 ))}
 
-                <div className="mt-1 pt-1.5 border-t border-border/40">
+                <div className="mt-1 pt-1.5 border-t border-border/40 px-1.5 pb-1.5">
                   <Link
                     to="/contact"
                     onClick={() => setOpen(false)}
-                    className="block w-full py-2.5 rounded-lg text-center font-bold text-xs uppercase tracking-wider"
+                    className="block w-full py-2.5 rounded-full text-center font-bold text-xs uppercase tracking-wider"
                     style={{ background: "var(--gradient-gold)", color: "white" }}
                   >
                     Get a Quote
