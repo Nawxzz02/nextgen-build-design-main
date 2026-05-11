@@ -21,6 +21,7 @@ import svcExterior from "@/assets/svc-exterior.jpg";
 import svcStructural from "@/assets/svc-structural.jpg";
 import svcSmart from "@/assets/svc-specialized.jpg";
 import { Reveal, StaggerGroup, StaggerItem, motion } from "@/components/motion";
+import { useInView } from "framer-motion";
 import { cn } from "@/lib/utils";
 import {
   Carousel,
@@ -115,8 +116,12 @@ function Counter({ value, duration = 2 }: { value: string; duration?: number }) 
   const [displayValue, setDisplayValue] = React.useState(0);
   const target = parseInt(value.replace(/[^0-9.]/g, ""));
   const suffix = value.replace(/[0-9.]/g, "");
+  const ref = React.useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   React.useEffect(() => {
+    if (!isInView) return;
+
     let start = 0;
     const end = target;
     const increment = end / (duration * 60);
@@ -130,10 +135,10 @@ function Counter({ value, duration = 2 }: { value: string; duration?: number }) 
       }
     }, 1000 / 60);
     return () => clearInterval(timer);
-  }, [target, duration]);
+  }, [target, duration, isInView]);
 
   return (
-    <span>
+    <span ref={ref}>
       {displayValue}
       {suffix}
     </span>
@@ -209,11 +214,11 @@ export default function Home() {
             </p>
             <div className="mt-8 md:mt-10 flex flex-wrap gap-3">
               <Link
-                to="/portfolio"
+                to="/contact"
                 className="inline-flex items-center gap-2 rounded-md px-5 py-2.5 md:px-6 md:py-3 text-sm font-semibold text-accent-foreground hover:opacity-90 transition"
                 style={{ background: "var(--gradient-gold)" }}
               >
-                View Projects <ArrowRight className="size-4" />
+                Get a Quote <ArrowRight className="size-4" />
               </Link>
               <Link
                 to="/contact"
@@ -326,7 +331,7 @@ export default function Home() {
       </section>
 
       {/* WHY */}
-      <section className="container-page pt-12 md:pt-20 pb-12 md:pb-20">
+      <section className="container-page pt-10 md:pt-10 pb-6 md:pb-10">
         <div className="grid md:grid-cols-2 gap-12">
           <Reveal>
             <span className="inline-flex items-center px-3 py-1 rounded-full bg-brand-blue/10 text-[10px] uppercase tracking-[0.2em] text-brand-blue font-bold mb-4">
@@ -380,7 +385,7 @@ export default function Home() {
         </div>
       </section>
             {/* CLIENTS */}
-      <section className="pt-12 md:pt-20 pb-4 md:pb-6 overflow-hidden">
+      <section className="pt-6 md:pt-10 pb-4 md:pb-6 overflow-hidden">
         <div className="container-page">
           <Reveal>
             <div className="flex flex-col items-center">
@@ -415,48 +420,7 @@ export default function Home() {
       </section>
 
 
-      {/* PORTFOLIO */}
-      <section className="pt-12 md:pt-20 pb-4 md:pb-5">
-        <div className="container-page">
-          <Reveal>
-            <div className="flex items-end justify-between flex-wrap gap-4">
-              <div>
-                <span className="inline-flex items-center px-3 py-1 rounded-full bg-brand-blue/10 text-[10px] uppercase tracking-[0.2em] text-brand-blue font-bold mb-4">
-                  Portfolio
-                </span>
-                <h2 className="mt-3 text-3xl md:text-5xl font-bold">Recent work.</h2>
-              </div>
-              <Link
-                to="/portfolio"
-                className="inline-flex items-center gap-2 text-sm font-semibold"
-              >
-                View all <ArrowRight className="size-4" />
-              </Link>
-            </div>
-          </Reveal>
-          <StaggerGroup className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
-            {[p1, p2, p3, p4].slice(0, 3).map((src, i) => (
-              <StaggerItem key={i}>
-                <motion.div
-                  whileHover={{ y: -4 }}
-                  transition={{ duration: 0.3 }}
-                  className="group relative aspect-4/5 overflow-hidden rounded-xl"
-                >
-                  <motion.img
-                    src={src}
-                    alt="Project"
-                    loading="lazy"
-                    className="size-full object-cover"
-                    whileHover={{ scale: 1.08 }}
-                    transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-                  />
-                  <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent" />
-                </motion.div>
-              </StaggerItem>
-            ))}
-          </StaggerGroup>
-        </div>
-      </section>
+
 
 
       {/* TESTIMONIALS & STATS */}

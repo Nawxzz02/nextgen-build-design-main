@@ -14,6 +14,7 @@ import {
   PenTool,
   Zap,
   Flag,
+  Trophy,
 } from "lucide-react";
 import p2 from "@/assets/portfolio-2.jpg";
 import vision2030 from "@/assets/vision-2030.png";
@@ -129,7 +130,7 @@ export default function About() {
       </section>
 
       <section className="py-8 md:py-12">
-        <div className="container-page grid md:grid-cols-3 gap-6">
+        <div className="container-page grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {[
             {
               icon: Eye,
@@ -142,21 +143,37 @@ export default function About() {
               text: "Deliver innovative, sustainable solutions that exceed client expectations from concept to handover.",
             },
             { icon: Sparkles, title: "Values", text: values.join(" · ") },
+            {
+              icon: Trophy,
+              title: "Goals",
+              text: "To align with Saudi Vision 2030 by delivering world-class infrastructure and interior excellence.",
+            },
           ].map((c) => (
-            <div
+            <motion.div
               key={c.title}
-              className="p-8 rounded-2xl bg-card border border-border"
+              whileHover="hovered"
+              initial="initial"
+              className="p-8 rounded-2xl bg-card border border-border transition-colors group"
               style={{ boxShadow: "var(--shadow-card)" }}
+              variants={{
+                initial: { y: 0, borderColor: "rgba(0,0,0,0)" },
+                hovered: { y: -8, borderColor: "var(--accent)" },
+              }}
+              transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
             >
-              <div
+              <motion.div
+                variants={{
+                  initial: { rotate: 0, scale: 1 },
+                  hovered: { rotate: 8, scale: 1.1 },
+                }}
                 className="size-12 rounded-lg flex items-center justify-center"
                 style={{ background: "var(--gradient-gold)" }}
               >
                 <c.icon className="size-6 text-accent-foreground" />
-              </div>
+              </motion.div>
               <h3 className="mt-5 text-xl font-bold">{c.title}</h3>
               <p className="mt-3 text-muted-foreground">{c.text}</p>
-            </div>
+            </motion.div>
           ))}
         </div>
       </section>

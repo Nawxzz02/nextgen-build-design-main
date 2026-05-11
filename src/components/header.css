@@ -10,6 +10,17 @@
   transition: padding 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+@media (max-width: 640px) {
+  .pill-header-wrapper {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+  .pill-header-wrapper.scrolled {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+}
+
 /* ─────────────────────────────────────────────
    Fluid Top Accent Line
 ───────────────────────────────────────────── */
