@@ -11,10 +11,10 @@ export default function Services() {
             Services
           </span>
           <h1 className="mt-4 text-4xl md:text-6xl font-bold max-w-3xl">
-            Six categories. One accountable contract.
+            Eight categories. One accountable contract.
           </h1>
           <p className="mt-6 text-lg text-primary-foreground/80 max-w-2xl">
-            From breaking ground to commissioning smart systems — every trade delivered by one team.
+            From breaking ground to commissioning smart systems — every element delivered by one professional team.
           </p>
         </div>
       </section>

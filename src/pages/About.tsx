@@ -89,43 +89,52 @@ export default function About() {
       </section>
 
       <section className="container-page pt-12 md:pt-20 pb-12 md:pb-20">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          <div>
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <Reveal>
             <span className="inline-flex items-center px-3 py-1 rounded-full bg-brand-blue/10 text-[10px] uppercase tracking-[0.2em] text-brand-blue font-bold mb-4">
-              Sectors
+              Introduction
             </span>
-            <h2 className="mt-3 text-3xl md:text-5xl font-bold">Expertise where it matters.</h2>
-            <p className="mt-6 text-muted-foreground text-lg leading-relaxed">
-              From heavy industrial plants to high-end clinical environments — our delivery model
-              adapts to the specific compliance, safety, and finish standards of each sector.
-            </p>
-            <div className="mt-10 grid sm:grid-cols-2 gap-4">
-              {sectors.map((s) => (
-                <div
-                  key={s.name}
-                  className="p-5 rounded-2xl border border-border bg-card/50 hover:border-accent transition-colors group"
-                >
-                  <div className="size-10 rounded-xl bg-brand-blue/5 flex items-center justify-center text-brand-blue group-hover:bg-accent group-hover:text-accent-foreground transition-colors">
-                    <s.icon className="size-5" />
-                  </div>
-                  <h3 className="mt-4 font-bold text-base">{s.name}</h3>
-                  <p className="mt-1 text-sm text-muted-foreground leading-snug">{s.desc}</p>
-                </div>
-              ))}
+            <h2 className="mt-3 text-3xl md:text-5xl font-bold">
+              Nextgen Solutions & Contracting Est.
+            </h2>
+            <div className="mt-6 space-y-4 text-muted-foreground text-lg leading-relaxed text-justify">
+              <p>
+                Nextgen Solutions and Contracting Est. is a professionally registered interior
+                fit-out and contracting establishment headquartered in Al Jubail, Eastern Province
+                of the Kingdom of Saudi Arabia. Incorporated in 2026 under the Ministry of
+                Commerce, Nextgen was founded on a singular conviction: that the quality of built
+                environments directly shapes the performance, well-being, and identity of the people
+                who occupy them.
+              </p>
+              <p>
+                From raw civil preparation through to bespoke joinery and smart systems integration,
+                Nextgen delivers every element of the interior fit-out scope under a single
+                contract, a unified management team, and one accountable point of contact. This
+                integrated model eliminates the coordination complexity that characterizes multi-
+                vendor fit-out projects — giving clients cost certainty, schedule reliability, and
+                quality consistency.
+              </p>
+              <p>
+                Led by experienced professionals and supported by skilled trades teams, the company
+                operates across commercial, hospitality, healthcare, retail, industrial, and premium
+                residential segments throughout the Eastern Province.
+              </p>
             </div>
-          </div>
-          <div
-            className="relative aspect-4/5 rounded-3xl overflow-hidden"
-            style={{ boxShadow: "var(--shadow-elegant)" }}
-          >
-            <img
-              src={p2}
-              alt="Construction site"
-              loading="lazy"
-              className="size-full object-cover"
-            />
-            <div className="absolute inset-0 bg-linear-to-t from-black/40 via-transparent" />
-          </div>
+          </Reveal>
+          <Reveal delay={0.15}>
+            <div
+              className="relative aspect-4/5 rounded-3xl overflow-hidden"
+              style={{ boxShadow: "var(--shadow-elegant)" }}
+            >
+              <img
+                src={p2}
+                alt="Nextgen interior fit-out excellence"
+                loading="lazy"
+                className="size-full object-cover"
+              />
+              <div className="absolute inset-0 bg-linear-to-t from-black/40 via-transparent" />
+            </div>
+          </Reveal>
         </div>
       </section>
 

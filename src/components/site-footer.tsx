@@ -61,10 +61,14 @@ export function SiteFooter() {
         <div>
           <h4 className="font-semibold text-sm mb-3">Services</h4>
           <ul className="space-y-2 text-sm text-white/70">
-            <li>Construction</li>
-            <li>Interior Fit-Out</li>
-            <li>MEP Installation</li>
-            <li>Smart Systems</li>
+            <li>Civil Construction</li>
+            <li>Waterproofing</li>
+            <li>HVAC Systems</li>
+            <li>Interior Finishes</li>
+            <li>Exterior Finishes</li>
+            <li>MEP Installations</li>
+            <li>IT Solutions</li>
+            <li>Electrical Solution</li>
           </ul>
         </div>
         <div className="col-span-2 md:col-span-1">

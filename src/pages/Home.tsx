@@ -33,39 +33,51 @@ import {
 const services = [
   {
     image: svcConstruction,
-    title: "Construction",
-    desc: "Civil works from foundation to handover.",
-    slug: "foundation",
-  },
-  {
-    image: svcInterior,
-    title: "Interior Fit-Out",
-    desc: "Premium joinery, finishes and bespoke craft.",
-    slug: "interior",
-  },
-  {
-    image: svcMep,
-    title: "MEP Installation",
-    desc: "Electrical, plumbing, HVAC and fire systems.",
-    slug: "mep",
-  },
-  {
-    image: svcExterior,
-    title: "Exterior Finishes",
-    desc: "Cladding, masonry, stucco and architectural details.",
-    slug: "exterior",
+    title: "CIVIL CONSTRUCTION",
+    desc: "Comprehensive civil works and structural foundations.",
+    slug: "civil-construction",
   },
   {
     image: svcStructural,
-    title: "Structural Works",
-    desc: "Engineered framing built to last.",
-    slug: "structural",
+    title: "WATERPROOFING",
+    desc: "Advanced membrane and coating protection systems.",
+    slug: "waterproofing",
+  },
+  {
+    image: svcMep,
+    title: "HVAC SYSTEMS",
+    desc: "Precision cooling, heating, and ventilation solutions.",
+    slug: "hvac-systems",
+  },
+  {
+    image: svcInterior,
+    title: "INTERIOR FINISHES",
+    desc: "Premium fit-out, joinery, and bespoke craftsmanship.",
+    slug: "interior-finishes",
+  },
+  {
+    image: svcExterior,
+    title: "EXTERIOR FINISHES",
+    desc: "Architectural facades, cladding, and masonry works.",
+    slug: "exterior-finishes",
+  },
+  {
+    image: svcMep,
+    title: "MEP INSTALLATIONS",
+    desc: "Integrated mechanical, electrical, and plumbing systems.",
+    slug: "mep-installations",
   },
   {
     image: svcSmart,
-    title: "Smart Systems",
-    desc: "CCTV, IT networks and building automation.",
-    slug: "specialized",
+    title: "IT SOLUTIONS",
+    desc: "Smart networking, CCTV, and building automation.",
+    slug: "it-solutions",
+  },
+  {
+    image: svcMep,
+    title: "ELECTRICAL SOLUTION",
+    desc: "Power distribution, lighting, and electrical engineering.",
+    slug: "electrical-solution",
   },
 ];
 
