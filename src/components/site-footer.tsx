@@ -15,8 +15,10 @@ export function SiteFooter() {
             alt="Nextgen Solutions & Contracting"
             className="h-14 w-auto object-contain"
           />
-          <p className="mt-4 text-sm text-white/70 max-w-xs">
-            Integrated construction, fit-out, MEP and smart systems delivery across Saudi Arabia.
+          <p className="mt-4 text-sm text-white/70 max-w-xs leading-relaxed text-justify">
+            Nextgen Solutions & Contracting Est. is a premier Al Jubail-based firm specializing in
+            integrated interior fit-out and construction. We are dedicated to shaping environments
+            that enhance well-being and performance across Saudi Arabia.
           </p>
           <div className="mt-6 flex gap-4">
             <a href="#" className="p-2 rounded-full bg-white/5 hover:bg-accent hover:text-accent-foreground transition-colors">
@@ -33,7 +35,7 @@ export function SiteFooter() {
             </a>
           </div>
         </div>
-        <div>
+        <div className="md:pl-12">
           <h4 className="font-semibold text-sm mb-3">Company</h4>
           <ul className="space-y-2 text-sm text-white/70">
             <li>

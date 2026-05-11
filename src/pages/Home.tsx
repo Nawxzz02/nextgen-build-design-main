@@ -253,7 +253,7 @@ export default function Home() {
             <h2 className="mt-3 text-3xl md:text-5xl font-bold">
               One contractor. Civil to smart systems.
             </h2>
-            <p className="mt-5 text-muted-foreground text-lg leading-relaxed">
+            <p className="mt-5 text-muted-foreground text-lg leading-relaxed text-justify">
               Nextgen Solutions & Contracting Est. is an Al Jubail–based contractor delivering an
               integrated model — Civil → Joinery → Smart Systems — under a single point of contact.
             </p>

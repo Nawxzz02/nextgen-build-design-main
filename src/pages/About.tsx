@@ -92,7 +92,7 @@ export default function About() {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <Reveal>
             <span className="inline-flex items-center px-3 py-1 rounded-full bg-brand-blue/10 text-[10px] uppercase tracking-[0.2em] text-brand-blue font-bold mb-4">
-              Introduction
+              About us
             </span>
             <h2 className="mt-3 text-3xl md:text-5xl font-bold">
               Nextgen Solutions & Contracting Est.
