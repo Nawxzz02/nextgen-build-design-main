@@ -88,7 +88,7 @@ export default function Contact() {
                 value: "nextgensolutions.est@gmail.com",
                 href: "mailto:nextgensolutions.est@gmail.com",
               },
-              { icon: MapPin, label: "Office", value: "Al Jubail, Saudi Arabia" },
+              { icon: MapPin, label: "Office", value: "Dammam Branch, Al Hamra District, Al Jubail 35419, KSA" },
             ].map((c, i) => (
               <motion.a
                 key={c.label}
@@ -226,7 +226,7 @@ export default function Contact() {
             </h3>
           </div>
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d115844.13622434005!2d49.5670868!3d26.9602075!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e356f916726c717%3A0xb3638202970a2731!2sAl%20Jubail%20Saudi%20Arabia!5e0!3m2!1sen!2sus!4v1715247900000!5m2!1sen!2sus"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d160970.7665419697!2d49.54870583907845!3d26.935689413000862!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e359850089a549f%3A0x1afd16a6fb739340!2sAlhamra%2C%20Al%20Jubail%2035419%2C%20Saudi%20Arabia!5e0!3m2!1sen!2sin!4v1778581715803!5m2!1sen!2sin"
             width="100%"
             height="350"
             style={{ border: 0 }}

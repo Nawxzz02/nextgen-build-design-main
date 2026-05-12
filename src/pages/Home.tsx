@@ -20,6 +20,14 @@ import svcMep from "@/assets/svc-mep.jpg";
 import svcExterior from "@/assets/svc-exterior.jpg";
 import svcStructural from "@/assets/svc-structural.jpg";
 import svcSmart from "@/assets/svc-specialized.jpg";
+
+// Dynamically import all client logos
+const logoModules = import.meta.glob("../assets/clients-logo/*.{png,jpg,jpeg,svg,webp}", {
+  eager: true,
+  import: "default",
+});
+const clientLogos = Object.values(logoModules) as string[];
+
 import { Reveal, StaggerGroup, StaggerItem, motion } from "@/components/motion";
 import { useInView } from "framer-motion";
 import { cn } from "@/lib/utils";
@@ -109,20 +117,8 @@ const why = [
   },
 ];
 
-const clients = [
-  "ARAMCO",
-  "SABIC",
-  "Royal Commission",
-  "Ma'aden",
-  "NEOM",
-  "Red Sea",
-  "PIF",
-  "STC",
-  "Almarai",
-  "Saudi Electricity",
-  "Tasnee",
-  "Bahri",
-];
+// Old clients array removed in favor of dynamic logos
+const clients = clientLogos;
 
 function Counter({ value, duration = 2 }: { value: string; duration?: number }) {
   const [displayValue, setDisplayValue] = React.useState(0);
@@ -244,34 +240,41 @@ export default function Home() {
       </section>
 
       {/* ABOUT SNAPSHOT */}
-      <section className="container-page pt-12 md:pt-20 pb-12 md:pb-20">
+      <section className="container-page pt-12 md:pt-20 pb-12 md:pb-12">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <Reveal>
             <span className="inline-flex items-center px-3 py-1 rounded-full bg-brand-blue/10 text-[10px] uppercase tracking-[0.2em] text-brand-blue font-bold mb-4">
               About
             </span>
             <h2 className="mt-3 text-3xl md:text-5xl font-bold">
-              One contractor. Civil to smart systems.
+              Nextgen Solutions & Contracting Est.
             </h2>
-            <p className="mt-5 text-muted-foreground text-lg leading-relaxed text-justify">
-              Nextgen Solutions & Contracting Est. is an Al Jubail–based contractor delivering an
-              integrated model — Civil → Joinery → Smart Systems — under a single point of contact.
-            </p>
-            <ul className="mt-8 space-y-3">
-              {[
-                "Single point of contact",
-                "Cost certainty + quality consistency",
-                "Integrated multi-trade execution",
-              ].map((t) => (
-                <li key={t} className="flex items-center gap-3 text-sm">
-                  <CheckCircle2 className="size-5 text-accent" /> {t}
-                </li>
-              ))}
-            </ul>
+            <div className="mt-6 space-y-4 text-muted-foreground text-lg leading-normal text-justify">
+              <p>
+                Nextgen Solutions and Contracting Est. is a professionally registered interior
+                fit-out and contracting establishment headquartered in Al Jubail, Eastern Province
+                of the Kingdom of Saudi Arabia. Incorporated in 2026 under the Ministry of
+                Commerce, Nextgen was founded on a singular conviction: that the quality of built
+                environments directly shapes the performance, well-being, and identity of the people
+                who occupy them.
+              </p>
+              <p>
+                From raw civil preparation through to bespoke joinery and smart systems integration,
+                Nextgen delivers every element of the interior fit-out scope under a single
+                contract, a unified management team, and one accountable point of contact. This
+                integrated model eliminates the coordination complexity — giving clients cost
+                certainty, schedule reliability, and quality consistency.
+              </p>
+              <p>
+                Led by experienced professionals and supported by skilled trades teams, the company
+                operates across commercial, hospitality, healthcare, retail, industrial, and premium
+                residential segments throughout the Eastern Province.
+              </p>
+            </div>
           </Reveal>
           <Reveal delay={0.15}>
             <div
-              className="relative aspect-3/2 rounded-2xl overflow-hidden"
+              className="relative aspect-square rounded-2xl overflow-hidden"
               style={{ boxShadow: "var(--shadow-elegant)" }}
             >
               <img
@@ -396,7 +399,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-            {/* CLIENTS */}
+      {/* CLIENTS */}
       <section className="pt-6 md:pt-10 pb-4 md:pb-6 overflow-hidden">
         <div className="container-page">
           <Reveal>
@@ -420,10 +423,15 @@ export default function Home() {
             <div className="flex gap-4 w-max animate-scroll-marquee">
               {[...clients, ...clients].map((c, i) => (
                 <div
-                  key={`${c}-${i}`}
-                  className="h-20 w-48 shrink-0 rounded-lg border border-border bg-card flex items-center justify-center text-sm font-bold tracking-wider text-muted-foreground hover:text-foreground hover:border-accent transition-colors"
+                  key={i}
+                  className="h-24 w-48 shrink-0 rounded-lg border border-neutral-200 bg-white flex items-center justify-center px-8 transition-all group"
+                  style={{ boxShadow: "var(--shadow-card)" }}
                 >
-                  {c}
+                  <img
+                    src={c}
+                    alt="Client Logo"
+                    className="h-12 w-full object-contain transition-all duration-300"
+                  />
                 </div>
               ))}
             </div>
@@ -476,7 +484,7 @@ export default function Home() {
                           <div className="absolute -top-4 -left-2 text-4xl text-neutral-200 dark:text-neutral-800 pointer-events-none font-serif">
                             &ldquo;
                           </div>
-                          
+
                           <div className="relative z-10">
                             <p className="text-xl text-neutral-800 italic dark:text-neutral-200 leading-relaxed">
                               {t.content}
@@ -503,7 +511,7 @@ export default function Home() {
                     ))}
                   </CarouselContent>
                 </Carousel>
-                
+
                 {/* Carousel Pagination Dots */}
                 <div className="flex gap-2 mt-8">
                   {scrollSnaps.map((_, index) => (
@@ -544,8 +552,8 @@ export default function Home() {
                       description: "Experts team dedicated to precision and quality",
                     },
                   ].map((stat, i) => (
-                    <motion.li 
-                      key={i} 
+                    <motion.li
+                      key={i}
                       className="p-6 sm:p-10 md:p-12 cursor-pointer transition-colors hover:bg-neutral-50 dark:hover:bg-neutral-800/50 relative overflow-hidden group"
                       whileHover={{ backgroundColor: "rgba(0,0,0,0.02)" }}
                       whileTap={{ scale: 0.98 }}

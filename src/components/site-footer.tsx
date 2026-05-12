@@ -83,7 +83,7 @@ export function SiteFooter() {
               <Mail className="size-4 mt-0.5 shrink-0" /> nextgensolutions.est@gmail.com
             </li>
             <li className="flex items-start gap-2">
-              <MapPin className="size-4 mt-0.5 shrink-0" /> Al Jubail, Saudi Arabia
+              <MapPin className="size-4 mt-0.5 shrink-0" /> Dammam Branch, Al Hamra District, Al Jubail 35419, KSA
             </li>
           </ul>
         </div>

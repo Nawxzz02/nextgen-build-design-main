@@ -22,10 +22,10 @@ import { Reveal, motion } from "@/components/motion";
 
 const values = [
   "Innovation",
-  "Integrity",
-  "Client-centric",
-  "Sustainability",
-  "Seamless execution",
+  "client-centricity",
+  "integrity",
+  "sustainability",
+  "and seamless execution",
 ];
 const sectors = [
   { name: "Industrial & Energy", icon: Factory, desc: "Rigorous safety and high-spec builds." },
@@ -144,18 +144,18 @@ export default function About() {
             {
               icon: Eye,
               title: "Vision",
-              text: "To be a leading global provider of smart and sustainable construction solutions.",
+              text: "To become a leading global provider of smart, creative, and sustainable solutions in the construction industry.",
             },
             {
               icon: Target,
               title: "Mission",
-              text: "Deliver innovative, sustainable solutions that exceed client expectations from concept to handover.",
+              text: "To deliver innovative, sustainable design, construction, and technology solutions that enhance functionality and aesthetics.",
             },
-            { icon: Sparkles, title: "Values", text: values.join(" · ") },
+            { icon: Sparkles, title: "Values", text: "Innovation, client-centricity, integrity, sustainability, and seamless execution define our approach to every project." },
             {
               icon: Trophy,
               title: "Goals",
-              text: "To align with Saudi Vision 2030 by delivering world-class infrastructure and interior excellence.",
+              text: "Expand globally, maintain excellence, and exceed expectations through innovative solutions and sustainable growth.",
             },
           ].map((c) => (
             <motion.div
