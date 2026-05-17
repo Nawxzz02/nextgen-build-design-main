@@ -14,12 +14,7 @@ import p1 from "@/assets/portfolio-1.jpg";
 import p2 from "@/assets/portfolio-2.jpg";
 import p3 from "@/assets/portfolio-3.jpg";
 import p4 from "@/assets/portfolio-4.jpg";
-import svcConstruction from "@/assets/svc-foundation.jpg";
-import svcInterior from "@/assets/svc-interior.jpg";
-import svcMep from "@/assets/svc-mep.jpg";
-import svcExterior from "@/assets/svc-exterior.jpg";
-import svcStructural from "@/assets/svc-structural.jpg";
-import svcSmart from "@/assets/svc-specialized.jpg";
+
 
 // Dynamically import all client logos
 const logoModules = import.meta.glob("../assets/clients-logo/*.{png,jpg,jpeg,svg,webp}", {
@@ -37,57 +32,7 @@ import {
   CarouselItem,
   type CarouselApi,
 } from "@/components/ui/carousel";
-
-const services = [
-  {
-    image: svcConstruction,
-    title: "CIVIL CONSTRUCTION",
-    desc: "Comprehensive civil works and structural foundations.",
-    slug: "civil-construction",
-  },
-  {
-    image: svcStructural,
-    title: "WATERPROOFING",
-    desc: "Advanced membrane and coating protection systems.",
-    slug: "waterproofing",
-  },
-  {
-    image: svcMep,
-    title: "HVAC SYSTEMS",
-    desc: "Precision cooling, heating, and ventilation solutions.",
-    slug: "hvac-systems",
-  },
-  {
-    image: svcInterior,
-    title: "INTERIOR FINISHES",
-    desc: "Premium fit-out, joinery, and bespoke craftsmanship.",
-    slug: "interior-finishes",
-  },
-  {
-    image: svcExterior,
-    title: "EXTERIOR FINISHES",
-    desc: "Architectural facades, cladding, and masonry works.",
-    slug: "exterior-finishes",
-  },
-  {
-    image: svcMep,
-    title: "MEP INSTALLATIONS",
-    desc: "Integrated mechanical, electrical, and plumbing systems.",
-    slug: "mep-installations",
-  },
-  {
-    image: svcSmart,
-    title: "IT SOLUTIONS",
-    desc: "Smart networking, CCTV, and building automation.",
-    slug: "it-solutions",
-  },
-  {
-    image: svcMep,
-    title: "ELECTRICAL SOLUTION",
-    desc: "Power distribution, lighting, and electrical engineering.",
-    slug: "electrical-solution",
-  },
-];
+import { services } from "@/lib/services-data";
 
 const why = [
   {
@@ -251,12 +196,10 @@ export default function Home() {
             </h2>
             <div className="mt-6 space-y-4 text-muted-foreground text-lg leading-normal text-justify">
               <p>
-                Nextgen Solutions and Contracting Est. is a professionally registered interior
-                fit-out and contracting establishment headquartered in Al Jubail, Eastern Province
-                of the Kingdom of Saudi Arabia. Incorporated in 2026 under the Ministry of
-                Commerce, Nextgen was founded on a singular conviction: that the quality of built
-                environments directly shapes the performance, well-being, and identity of the people
-                who occupy them.
+                Nextgen Solutions and Contracting Est. is a professionally registered interior fit-out and contracting establishment headquartered in Al Jubail,
+                Kingdom of Saudi Arabia. Incorporated in 2026 under the Ministry of Commerce, 
+                Nextgen was founded on a singular conviction: that the quality of built environments directly 
+                shapes the performance, well-being, and identity of the people who occupy them.
               </p>
               <p>
                 From raw civil preparation through to bespoke joinery and smart systems integration,
@@ -309,17 +252,18 @@ export default function Home() {
           </div>
           <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.map((s, i) => (
-              <Reveal key={s.title} delay={i * 0.02}>
+              <Reveal key={s.title} delay={i * 0.02} className="h-full">
                 <motion.div
                   whileHover={{ y: -6 }}
                   transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                  className="h-full"
                 >
                   <Link
                     to={`/services/${s.slug}`}
-                    className="group block rounded-2xl overflow-hidden bg-card border border-border hover:border-accent transition-colors"
+                    className="group flex flex-col h-full rounded-2xl overflow-hidden bg-card border border-border hover:border-accent transition-colors"
                     style={{ boxShadow: "var(--shadow-card)" }}
                   >
-                    <div className="aspect-4/3 overflow-hidden">
+                    <div className="aspect-4/3 overflow-hidden shrink-0">
                       <motion.img
                         src={s.image}
                         alt={s.title}
@@ -329,13 +273,17 @@ export default function Home() {
                         transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
                       />
                     </div>
-                    <div className="p-6">
-                      <h3 className="font-semibold text-lg">{s.title}</h3>
-                      <p className="mt-2 text-sm text-muted-foreground">{s.desc}</p>
-                      <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-blue">
-                        Learn more{" "}
-                        <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
-                      </span>
+                    <div className="p-6 flex flex-col flex-1 justify-between">
+                      <div>
+                        <h3 className="font-semibold text-lg">{s.title}</h3>
+                        <p className="mt-2 text-sm text-muted-foreground">{s.short}</p>
+                      </div>
+                      <div className="pt-4">
+                        <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-blue">
+                          Learn more{" "}
+                          <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+                        </span>
+                      </div>
                     </div>
                   </Link>
                 </motion.div>

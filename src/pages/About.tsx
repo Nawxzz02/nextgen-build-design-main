@@ -99,12 +99,10 @@ export default function About() {
             </h2>
             <div className="mt-6 space-y-4 text-muted-foreground text-lg leading-relaxed text-justify">
               <p>
-                Nextgen Solutions and Contracting Est. is a professionally registered interior
-                fit-out and contracting establishment headquartered in Al Jubail, Eastern Province
-                of the Kingdom of Saudi Arabia. Incorporated in 2026 under the Ministry of
-                Commerce, Nextgen was founded on a singular conviction: that the quality of built
-                environments directly shapes the performance, well-being, and identity of the people
-                who occupy them.
+                Nextgen Solutions and Contracting Est. is a professionally registered interior fit-out and contracting establishment headquartered in Al Jubail,
+                Kingdom of Saudi Arabia. Incorporated in 2026 under the Ministry of Commerce, 
+                Nextgen was founded on a singular conviction: that the quality of built environments directly 
+                shapes the performance, well-being, and identity of the people who occupy them.
               </p>
               <p>
                 From raw civil preparation through to bespoke joinery and smart systems integration,
